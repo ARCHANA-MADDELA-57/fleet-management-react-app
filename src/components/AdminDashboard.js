@@ -45,6 +45,10 @@ const AdminDashboard = () =>{
                         <option>Bus</option>
                     </select><br/>
                     <input type="text" placeholder="Driver Name" value={form.driverName} onChange={e=>setForm({...form,driverName:e.target.value})}/><br/>
+                    <select value={form.status} onChange={e=>setForm({...form,status:e.target.value})}>
+                        <option>Available</option>
+                        <option>Unavailable</option>
+                    </select><br/>
                     <button type="submit">Add Fleet</button>
                 </form>
             </div>
@@ -53,7 +57,8 @@ const AdminDashboard = () =>{
                 <h2>Fleet Cards</h2>
                 <div style={{display:'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap:'10px'}}>
                     {fleet.map(vehicle=>(
-                        <FleetCard key={vehicle.id} vehicle={vehicle}
+                        <FleetCard key={vehicle.id} 
+                        vehicle={vehicle}
                         onUpdateDriver={UpdateDriver}
                         onChangeStatus={toggleStatus}
                         onDelete={deleteVehicle}/>
